@@ -8,7 +8,7 @@ services:
       - postgres
     ports:
       - "4000:4000"
-    command: mix phx.server
+    command: phx.server
   postgres:
     image: postgres:9.6
     ports:

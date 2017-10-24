@@ -26,4 +26,5 @@ ADD . ./
 
 USER default
 
-CMD ["mix", "phx.server"]
+ENTRYPOINT ["mix"]
+CMD ["phx.server"]
