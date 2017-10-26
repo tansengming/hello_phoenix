@@ -21,6 +21,13 @@ defmodule HelloWeb.Router do
     get "/hello/:messenger", HelloController, :show
   end
 
+  use ExAdmin.Router
+  # your app's routes
+  scope "/admin", ExAdmin do
+    pipe_through :browser
+    admin_routes()
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", HelloWeb do
   #   pipe_through :api

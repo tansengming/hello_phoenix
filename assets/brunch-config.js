@@ -2,25 +2,22 @@ exports.config = {
   // See http://brunch.io/#documentation for docs.
   files: {
     javascripts: {
-      joinTo: "js/app.js"
-
-      // To use a separate vendor.js bundle, specify two files path
-      // http://brunch.io/docs/config#-files-
-      // joinTo: {
-      //   "js/app.js": /^js/,
-      //   "js/vendor.js": /^(?!js)/
-      // }
-      //
-      // To change the order of concatenation of files, explicitly mention here
-      // order: {
-      //   before: [
-      //     "vendor/js/jquery-2.1.1.js",
-      //     "vendor/js/bootstrap.min.js"
-      //   ]
-      // }
+      joinTo: {
+        "js/app.js": /^(js)|(node_modules)/,
+        "js/ex_admin_common.js": ["vendor/ex_admin_common.js"],
+        "js/admin_lte2.js": ["vendor/admin_lte2.js"],
+        "js/jquery.min.js": ["vendor/jquery.min.js"],
+      }
     },
     stylesheets: {
-      joinTo: "css/app.css"
+      joinTo: {
+        "css/app.css": /^(css)/,
+        "css/admin_lte2.css": ["vendor/admin_lte2.css"],
+        "css/active_admin.css.css": ["vendor/active_admin.css.css"],
+      },
+      order: {
+        after: ["css/app.css"] // concat app.css last
+      }
     },
     templates: {
       joinTo: "js/app.js"
@@ -60,3 +57,45 @@ exports.config = {
     enabled: true
   }
 };
+
+// To add the ExAdmin generated assets to your brunch build, do the following:
+//
+// Replace
+//
+//     javascripts: {
+//       joinTo: "js/app.js"
+//     },
+//
+// With
+//
+//     javascripts: {
+//       joinTo: {
+//         "js/app.js": /^(js)|(node_modules)/,
+//         "js/ex_admin_common.js": ["vendor/ex_admin_common.js"],
+//         "js/admin_lte2.js": ["vendor/admin_lte2.js"],
+//         "js/jquery.min.js": ["vendor/jquery.min.js"],
+//       }
+//     },
+//
+// Replace
+//
+//     stylesheets: {
+//       joinTo: "css/app.css",
+//       order: {
+//         after: ["css/app.css"] // concat app.css last
+//       }
+//     },
+//
+// With
+//
+//     stylesheets: {
+//       joinTo: {
+//         "css/app.css": /^(css)/,
+//         "css/admin_lte2.css": ["vendor/admin_lte2.css"],
+//         "css/active_admin.css.css": ["vendor/active_admin.css.css"],
+//       },
+//       order: {
+//         after: ["css/app.css"] // concat app.css last
+//       }
+//     },
+//
