@@ -24,7 +24,7 @@ config :logger, :console,
 
 config :ex_admin,
   repo: Hello.Repo,
-  module: Hello.Web,
+  module: HelloWeb,
   modules: [
     Hello.ExAdmin.Dashboard,
   ]
